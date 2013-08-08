@@ -26,4 +26,10 @@ describe("linkedList", function() {
     expect(linkedList.head).toEqual(linkedList.tail);
   });
   // add more tests here to test the functionality of linkedList
+  it("should have different head and tail results for a linked list with 2 or more elements", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    expect(linkedList.head).toEqual('a');
+    expect(linkedList.tail).toEqual('b');
+  });
 });

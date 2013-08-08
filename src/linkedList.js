@@ -9,7 +9,9 @@ var makeLinkedList = function(){
   list.addToTail = function(value){
     list[list.idx] = makeNode(value);
     list.tail = value;
-    list.head = value;
+    if(list.idx === 0) {
+      list.head = value;
+    }
     list.idx++;
   };
 
