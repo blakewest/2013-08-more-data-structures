@@ -26,6 +26,11 @@ describe("tree", function() {
     expect(tree.contains('b')).toEqual(false);
   });
 
+  it("should return accurate value for an added child", function() {
+    tree.addChild('anything');
+    expect(tree.children[0].value).toEqual('anything');
+  });
+
   it("contains should return true if any children of this node have the passed in value", function() {
     tree.addChild('a');
     expect(tree.contains('a')).toEqual(true);
