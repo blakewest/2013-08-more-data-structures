@@ -14,7 +14,13 @@ var extend = function(to, from) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value){
+  var newTree = makeTree(value);
+  this.children.push(newTree);
 };
 
-treeMethods.contains = function(){
+treeMethods.contains = function(input, node){
+  node = node || this;
+  var result = false;
+  if(this.value === input) result = true;
+  return result;
 };
