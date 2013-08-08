@@ -38,4 +38,11 @@ describe("linkedList", function() {
     linkedList.addToTail('b');
     expect(linkedList.removeHead()).toEqual('a');
   });
+
+  it("should update head after calling removeHead", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.removeHead();
+    expect(linkedList.head).toEqual('b');
+  });
 });
