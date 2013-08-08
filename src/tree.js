@@ -18,9 +18,14 @@ treeMethods.addChild = function(value){
   this.children.push(newTree);
 };
 
-treeMethods.contains = function(input, node){
-  node = node || this;
+treeMethods.contains = function(input){
   var result = false;
-  if(this.value === input) result = true;
+  if(this.value === input) {
+    return true;
+  }else if (this.children.length){
+    for (var i = 0; i < this.children.length; i++) {
+     return this.children[i].contains(input);
+    }
+  }
   return result;
 };
