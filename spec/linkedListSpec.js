@@ -46,4 +46,10 @@ describe("linkedList", function() {
     expect(linkedList.head).toEqual({value: 'b', next: null});
   });
 
+  it("should return accurate boolean if it contains the passed in value", function() {
+    expect(linkedList.contains('a')).toEqual(false);
+    linkedList.addToTail('b');
+    expect(linkedList.contains('b')).toEqual(true);
+  });
+
 });

@@ -25,7 +25,13 @@ var makeLinkedList = function(){
     return result.value;
   };
 
-  list.contains = function(){
+  list.contains = function(value){
+    for (var key in list) {
+      if (list[key] && list[key].value === value) {
+        return true;
+      }
+    }
+    return false;
   };
 
   return list;
