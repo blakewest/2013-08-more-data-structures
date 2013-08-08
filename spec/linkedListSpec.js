@@ -32,4 +32,10 @@ describe("linkedList", function() {
     expect(linkedList.head).toEqual('a');
     expect(linkedList.tail).toEqual('b');
   });
+
+  it("should show you first value added when calling removeHead", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    expect(linkedList.removeHead()).toEqual('a');
+  });
 });
