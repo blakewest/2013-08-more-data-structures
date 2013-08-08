@@ -16,5 +16,14 @@ describe("linkedList", function() {
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
 
+  it("should return undefined when calling head or tail of an empty linked list", function() {
+    expect(linkedList.head).toEqual(null);
+    expect(linkedList.tail).toEqual(null);
+  });
+
+  it("should return the same element when calling head or tail in a linked list of length 1", function() {
+    linkedList.addToTail('a');
+    expect(linkedList.head).toEqual(linkedList.tail);
+  });
   // add more tests here to test the functionality of linkedList
 });

@@ -3,8 +3,14 @@ var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
+  list.idx = 0;
+  list.tracker = 0;
 
-  list.addToTail = function(){
+  list.addToTail = function(value){
+    list[list.idx] = makeNode(value);
+    list.tail = value;
+    list.head = value;
+    list.idx++;
   };
 
   list.removeHead = function(){
