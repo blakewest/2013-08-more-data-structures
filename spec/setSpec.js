@@ -14,5 +14,7 @@ describe("set", function() {
   it("should actually add things when you call add", function() {
     set.add('a');
     expect(set.contains('a')).toEqual(true);
+    expect(set.contains('b')).toEqual(false);
   });
+
 });
