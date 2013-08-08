@@ -29,8 +29,8 @@ describe("linkedList", function() {
   it("should have different head and tail results for a linked list with 2 or more elements", function() {
     linkedList.addToTail('a');
     linkedList.addToTail('b');
-    expect(linkedList.head).toEqual('a');
-    expect(linkedList.tail).toEqual('b');
+    expect(linkedList.head).toEqual({value:'a', next:{value: 'b', next: null}});
+    expect(linkedList.tail).toEqual({value: 'b', next: null});
   });
 
   it("should show you first value added when calling removeHead", function() {
@@ -43,6 +43,7 @@ describe("linkedList", function() {
     linkedList.addToTail('a');
     linkedList.addToTail('b');
     linkedList.removeHead();
-    expect(linkedList.head).toEqual('b');
+    expect(linkedList.head).toEqual({value: 'b', next: null});
   });
+
 });
