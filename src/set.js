@@ -14,5 +14,6 @@ setPrototype.contains = function( value ){
   return Boolean( this._storage[value] );
 };
 
-setPrototype.remove = function(){
+setPrototype.remove = function( value ){
+  delete this._storage[value];
 };

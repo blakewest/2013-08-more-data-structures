@@ -17,4 +17,10 @@ describe("set", function() {
     expect(set.contains('b')).toEqual(false);
   });
 
+  it("should actually remove a value", function() {
+    set.add('a');
+    set.remove('a');
+    expect(set.contains('a')).toEqual(false);
+  });
+
 });
