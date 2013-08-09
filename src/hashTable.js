@@ -23,7 +23,10 @@ HashTable.prototype.retrieve = function(k){
   return this._storage.get(i);
 };
 
-HashTable.prototype.remove = function(){
+HashTable.prototype.remove = function( key ){
+  var i = getIndexBelowMaxForKey(key, this._limit);
+  console.log(i);
+  this._storage.set(i, undefined);
 };
 
 // NOTE: For this code to work, you will NEED the code from hashTableHelpers.js

@@ -10,6 +10,12 @@ describe("hashTable", function() {
     expect(hashTable.retrieve).toEqual(jasmine.any(Function));
   });
 
+  it("should return undefined where a removed item used to be", function() {
+    hashTable.insert('string','test');
+    hashTable.remove('string');
+    expect(hashTable.retrieve('string')).toEqual(undefined);
+  });
+
   it("should handle hash function collisions", function(){
     // force the hash function to return 0
     spyOn(window, 'getIndexBelowMaxForKey').andReturn(0);
