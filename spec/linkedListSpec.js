@@ -30,8 +30,8 @@ describe("linkedList", function() {
     linkedList.addToTail('a');
     linkedList.addToTail('b');
     linkedList.addToTail('c');
-    expect(linkedList.head).toEqual({value:'a', next:{value: 'b', next: null, previous: null }});
-    expect(linkedList.tail).toEqual({value: 'b', next: null});
+    expect(linkedList.head).toEqual({value:'a', next: 1, previous: null});
+    expect(linkedList.tail).toEqual({value: 'c', next: null, previous: 1});
   });
 
   it("should show you first value added when calling removeHead", function() {
