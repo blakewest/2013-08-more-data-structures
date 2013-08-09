@@ -70,12 +70,8 @@ var makeLinkedList = function(){
     // Shifting the head on a non-empty list
 
     if ( list.index ) {
-      //var currentHeadIndex = list.head.next ? list[list.head.next].previous : findSoloNodeIndex();
-
-
-
-      // find neighbor of current head to determine currentHead's index
-      var currentHeadIndex = list[list.head.next].previous;
+      // find neighbor of current head to determine currentHead's index, or find solo node index
+      var currentHeadIndex = list.head.next ? list[list.head.next].previous : list.findSoloNodeIndex();
       // set new node next to current head index
       newNode.next = currentHeadIndex;
       // set current head previous to new nodes index

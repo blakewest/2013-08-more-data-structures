@@ -73,7 +73,7 @@ describe("linkedList", function() {
   it("should removeTail right", function() {
     linkedList.addToHead('a');
     linkedList.addToHead('b');
-    expect(linkedList.removeTail()).toEqual('b');
+    expect(linkedList.removeTail()).toEqual('a');
   });
 
 
