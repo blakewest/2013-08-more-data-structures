@@ -35,6 +35,24 @@ var makeLinkedList = function(){
     return result.value;
   };
 
+  list.removeTail = function() {
+    // get tail
+    var result = list.tail;
+
+    // set the next value of the thing previous to tail to null
+    list[result.previous].next = null;
+
+    // delete the old tail
+    delete list[ list[ result.previous ].next ];
+
+    // update tail property
+    list.tail = list[ result.previous ];
+
+    // return the old tail
+    return result.value;
+
+  };
+
   list.contains = function(value){
     for (var key in list) {
       if (list[key] && list[key].value === value) {
@@ -50,17 +68,22 @@ var makeLinkedList = function(){
     // get current head
     var currentHead = list.head;
     // Shifting the head on a non-empty list
+
     if ( list.index ) {
+      //var currentHeadIndex = list.head.next ? list[list.head.next].previous : findSoloNodeIndex();
+
+
+
       // find neighbor of current head to determine currentHead's index
       var currentHeadIndex = list[list.head.next].previous;
       // set new node next to current head index
       newNode.next = currentHeadIndex;
       // set current head previous to new nodes index
       currentHead.previous = list.index;
+    } else {
+      // set tail to newNode if list is empty
+      list.tail = newNode;
     }
-
-    // set tail to newNode if list is empty
-    if( !list.index ) { list.tail = newNode; }
 
     // place new node in list
     list[list.index] = newNode;
@@ -70,8 +93,12 @@ var makeLinkedList = function(){
     list.index++;
   };
 
-  list.removeTail = function() {
-
+  list.findSoloNodeIndex = function() {
+    for( var key in list ) {
+      if ( key[0] >= '0' && key[0] <= '9') {
+        return +key;
+      }
+    }
   };
 
   return list;
