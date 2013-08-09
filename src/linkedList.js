@@ -3,27 +3,31 @@ var makeLinkedList = function(){
   var list = {};
   list.head = null;
   list.tail = null;
-  list.idx = 0;
-  list.tracker = 0;
+  list.index = 0;
+  list.start = 0;
+
+  //get rid of tracker (start), just use index (index) as the pointer for any item. 
+  //everytime you make a new node, index increases. 
+  //just use the 'head' and 'tail' as the pointers when you removeHead and removeTail
 
   list.addToTail = function(value){
     var newNode = makeNode(value);
-    list[list.idx] = newNode;
+    list[list.index] = newNode;
     list.tail = newNode;
-    if(list.idx === 0) {       // this sets head for very first item.
+    if(list.index === 0) {       // this sets head for very first item.
       list.head = newNode;
     }else {
-      list[list.idx-1].next = list.idx;
-      list[list.idx].previous = list.idx-1;
+      list[list.index-1].next = list.index;
+      list[list.index].previous = list.index-1;
     }
-    list.idx++;
+    list.index++;
   };
 
   list.removeHead = function(){
-    var result = list[list.tracker];
-    if(list[list.tracker]) {
-      delete list[list.tracker];
-      list.tracker++;
+    var result = list[list.start];
+    if(list[list.start]) {
+      delete list[list.start];
+      list.start++;
     }
     list[result.next].previous = null;
     list.head = list[result.next];
@@ -38,6 +42,36 @@ var makeLinkedList = function(){
       }
     }
     return false;
+  };
+
+  list.addToHead = function(value) {
+    var newNode = makeNode(value);
+
+    // get current head
+    var currentHead = list.head;
+    // Shifting the head on a non-empty list
+    if ( list.index ) {
+      // find neighbor of current head to determine currentHead's index
+      var currentHeadIndex = list[list.head.next].previous;
+      // set new node next to current head index
+      newNode.next = currentHeadIndex;
+      // set current head previous to new nodes index
+      currentHead.previous = list.index;
+    }
+
+    // set tail to newNode if list is empty
+    if( !list.index ) { list.tail = newNode; }
+
+    // place new node in list
+    list[list.index] = newNode;
+    // reset head to new node
+    list.head = newNode;
+    //increment index
+    list.index++;
+  };
+
+  list.removeTail = function() {
+
   };
 
   return list;

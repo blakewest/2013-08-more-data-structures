@@ -65,6 +65,11 @@ describe("linkedList", function() {
 
   });
 
+  it("should be able to addToHead for an empty list", function() {
+    linkedList.addToHead('a');
+    expect(linkedList.head.value).toEqual('a');
+  });
+
 
 
 
