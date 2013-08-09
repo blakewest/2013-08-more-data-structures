@@ -13,15 +13,21 @@ var makeLinkedList = function(){
     if(list.idx === 0) {       // this sets head for very first item.
       list.head = newNode;
     }else {
-      list[list.idx-1].next = newNode;     //resets next value or prev item to the newly added node
+      list[list.idx-1].next = list.idx;
+      list[list.idx].previous = list.idx-1;
     }
     list.idx++;
   };
 
   list.removeHead = function(){
     var result = list[list.tracker];
-    if(list[list.tracker]) list.tracker++;
-    list.head = result.next;
+    if(list[list.tracker]) {
+      delete list[list.tracker];
+      list.tracker++;
+    }
+    list[result.next].previous = null;
+    list.head = list[result.next];
+    
     return result.value;
   };
 
@@ -41,6 +47,7 @@ var makeNode = function(value){
   var node = {};
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };

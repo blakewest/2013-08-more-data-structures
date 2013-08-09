@@ -29,7 +29,8 @@ describe("linkedList", function() {
   it("should have different head and tail results for a linked list with 2 or more elements", function() {
     linkedList.addToTail('a');
     linkedList.addToTail('b');
-    expect(linkedList.head).toEqual({value:'a', next:{value: 'b', next: null}});
+    linkedList.addToTail('c');
+    expect(linkedList.head).toEqual({value:'a', next:{value: 'b', next: null, previous: null }});
     expect(linkedList.tail).toEqual({value: 'b', next: null});
   });
 
@@ -51,5 +52,71 @@ describe("linkedList", function() {
     linkedList.addToTail('b');
     expect(linkedList.contains('b')).toEqual(true);
   });
+
+  //doubly linked list tests
+
+  it("should set previous property correctly when adding to tail", function() {
+    linkedList.addToTail('a');
+    linkedList.addToTail('b');
+    linkedList.addToTail('c');
+
+    expect(linkedList.head.previous).toEqual(null);
+    expect(linkedList.tail.previous).toEqual(1);
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
