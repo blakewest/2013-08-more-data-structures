@@ -51,4 +51,20 @@ describe("set", function() {
     expect(set.contains(2)).toEqual(false);
   });
 
+  it('should handle simple arrays', function() {
+    set.add([1]);
+    expect(set.contains([1])).toEqual(true);
+    set.remove([1]);
+    expect(set.contains([1])).toEqual(false);
+  });
+
+    it('should handle simple objects', function() {
+    set.add({'a':'b'});
+    expect(set.contains({'a':'b'})).toEqual(true);
+    set.remove({'a':'b'});
+    expect(set.contains({'a':'b'})).toEqual(false);
+  });
+
+
+
 });
