@@ -58,11 +58,36 @@ describe("set", function() {
     expect(set.contains([1])).toEqual(false);
   });
 
-    it('should handle simple objects', function() {
+  it('should handle simple objects', function() {
     set.add({'a':'b'});
     expect(set.contains({'a':'b'})).toEqual(true);
     set.remove({'a':'b'});
     expect(set.contains({'a':'b'})).toEqual(false);
+  });
+
+  it('should handle complex objects', function() {
+    set.add({
+      'a':'b',
+      'c': [1,2,3,"a","b",true, false],
+      'stringy': true
+    });
+    expect(set.contains({
+      'a':'b',
+      'c': [1,2,3,"a","b",true, false],
+      'stringy': true
+    })).toEqual(true);
+
+    set.remove({
+      'a':'b',
+      'c': [1,2,3,"a","b",true, false],
+      'stringy': true
+    });
+    expect(set.contains({
+      'a':'b',
+      'c': [1,2,3,"a","b",true, false],
+      'stringy': true
+    })).toEqual(false);
+    
   });
 
 
