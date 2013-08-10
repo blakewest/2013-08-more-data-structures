@@ -52,6 +52,12 @@ describe("tree", function() {
     expect(tree.children[0].children[0].parent).toEqual(tree.children[0]);
   });
 
+  it("should remove a node from its parent", function() {
+    tree.addChild('a');
+    tree.children[0].removeFromParent();
+    expect(tree.children.length).toEqual(0);
+  });
+
 
   // Add more tests here to test the functionality of tree.
 });
