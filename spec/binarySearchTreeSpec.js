@@ -39,10 +39,16 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.right.value).toEqual(12);
   });
 
-    it("should insert beyond one level", function() {
-      binarySearchTree.insert(12);
-      binarySearchTree.insert(11);
+  it("should insert beyond one level", function() {
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(11);
 
-      expect(binarySearchTree.right.left.value).toEqual(11);
-    });
+    expect(binarySearchTree.right.left.value).toEqual(11);
+  });
+
+  it("should return true for a value in the tree", function() {
+    expect(binarySearchTree.contains(10)).toEqual(true);
+  });
+
+
 });
