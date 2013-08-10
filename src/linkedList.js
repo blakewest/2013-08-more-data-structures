@@ -11,15 +11,26 @@ var makeLinkedList = function(){
   //just use the 'head' and 'tail' as the pointers when you removeHead and removeTail
 
   list.removeHead = function(){
-    var result = list[list.start];
-    if(list[list.start]) {
-      delete list[list.start];
-      list.start++;
+    var result = list.head;
+
+    if (!result) {
+      return null;
+    }else if (result.next) {
+      var nextItem = list[result.next];
+
+      delete list[nextItem.previous];
+
+      nextItem.previous = null;
+
+      list.head = nextItem;
+    }else {
+      list.tail = null;
+      list.head = null;
+      delete list[list.findSoloNodeIndex()];
     }
-    list[result.next].previous = null;
-    list.head = list[result.next];
-    
+
     return result.value;
+
   };
 
   list.removeTail = function() {

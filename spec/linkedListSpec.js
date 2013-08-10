@@ -89,6 +89,10 @@ describe("linkedList", function() {
     expect(linkedList.removeTail()).toEqual('d');
   });
 
+  it("should removeHead on an empty list", function() {
+    expect(linkedList.removeHead()).toEqual(null);
+  });
+
 
 
 
