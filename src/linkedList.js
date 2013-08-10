@@ -37,8 +37,11 @@ var makeLinkedList = function(){
     // get tail
     var result = list.tail;
     
+    if (!result) {
+      return null;
+    }
     //only do if there is a previous item
-    if (result.previous){   
+    else if (result.previous){   
       var previousItem = list[result.previous];
 
       // delete the old tail
@@ -47,16 +50,14 @@ var makeLinkedList = function(){
       // set the next value of the thing previous to tail to null
       previousItem.next = null;
       
-
       // update tail property
       list.tail = previousItem;
 
-    } else{  //this happens when there's only one item
+    }else{  //this happens when there's only one item
       list.tail = null;
       list.head = null;
       delete list[list.findSoloNodeIndex()];
     }
-
     
     // return the old tail
     return result.value;

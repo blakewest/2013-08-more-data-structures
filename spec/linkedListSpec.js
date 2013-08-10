@@ -76,6 +76,10 @@ describe("linkedList", function() {
     expect(linkedList.removeTail()).toEqual('a');
   });
 
+  it("should return null when removeTail is called on an emtpy list", function() {
+    expect(linkedList.removeTail()).toEqual(null);
+  });
+
   it("should removeTail on a list with one element in any case", function() {
     linkedList.addToHead('a');
     expect(linkedList.removeTail()).toEqual('a');
@@ -107,60 +111,23 @@ describe("linkedList", function() {
     linkedList.removeHead();
     linkedList.addToHead('e');
     expect(linkedList.removeHead()).toEqual('e');
-  })
 
+    expect(linkedList.removeHead()).toEqual(null);
+  });
 
+  it("should handle a variety of operations", function() {
+    linkedList.addToHead('a');
+    linkedList.addToTail('b');
+    linkedList.addToHead('c');
+    linkedList.addToTail('d');
 
+    expect(linkedList.removeTail()).toEqual('d');
+    expect(linkedList.removeHead()).toEqual('c');
 
+    linkedList.removeHead();
+    linkedList.removeTail();
+    expect(linkedList.removeHead()).toEqual(null);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
 
 });
