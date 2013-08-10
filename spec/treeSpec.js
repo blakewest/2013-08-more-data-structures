@@ -1,8 +1,13 @@
 describe("tree", function() {
   var tree;
-
+  var test;
   beforeEach(function() {
     tree = makeTree();
+    test = {
+      callback: function(value) {
+        return value;
+      }
+    };
   });
 
   it("should have methods named 'addChild' and 'contains', and a property named 'value'", function() {
@@ -64,6 +69,18 @@ describe("tree", function() {
     var a = tree.children[0].removeFromParent();
     expect(a.children.length).toEqual(1);
   });
+
+  it("should traverse", function() {
+    spyOn(test, 'callback');
+    tree.addChild('a');
+    tree.addChild('b');
+    tree.children[0].addChild('c');
+
+    tree.traverse(test.callback);
+
+    expect(test.callback.calls.length).toEqual(4);
+  });
+
 
 
   // Add more tests here to test the functionality of tree.

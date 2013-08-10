@@ -31,6 +31,15 @@ treeMethods.contains = function(input){
   return result;
 };
 
+treeMethods.traverse = function(callback) {
+  callback(this.value);
+  if(this.children) {
+    for (var i = 0; i < this.children.length; i++) {
+      this.children[i].traverse(callback);
+    }
+  }
+};
+
 // disassociates the tree with its parent (in both directions)
 treeMethods.removeFromParent = function() {
   // get parent
