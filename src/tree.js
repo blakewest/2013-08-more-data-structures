@@ -30,3 +30,17 @@ treeMethods.contains = function(input){
   }
   return result;
 };
+
+// disassociates the tree with its parent (in both directions)
+treeMethods.removeFromParent = function() {
+  // get parent
+  var parent = this.parent;
+
+  // remove this node from the parent's children array property
+
+  // set this nodes parent property to null
+  this.parent = null;
+
+  // return this node
+  return this;
+};
