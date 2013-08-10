@@ -50,5 +50,17 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.contains(10)).toEqual(true);
   });
 
+  it("contains should return correctly", function() {
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(14);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(8.5);
+
+    expect(binarySearchTree.contains(1)).toEqual(false);
+    expect(binarySearchTree.contains(14)).toEqual(true);
+    expect(binarySearchTree.contains(8.5)).toEqual(true);
+    expect(binarySearchTree.contains(9)).toEqual(true);
+  });
 
 });
