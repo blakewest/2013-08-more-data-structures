@@ -37,6 +37,10 @@ describe("tree", function() {
     expect(tree.contains('b')).toEqual(false);
   });
 
+  it("should contain a parent property", function() {
+    expect(tree.parent).toEqual(null);
+  });
+
 
   // Add more tests here to test the functionality of tree.
 });
