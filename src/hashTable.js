@@ -13,14 +13,15 @@ var HashTable = function(){
 };
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  console.log(i);
-  if ( !this._storage.get(i) ) {// this stuff happens when slot i is empty
-    var newArr = [];
-    newArr.push([k,v]);
-    this._storage.set(i, newArr);
+  var pairs = this._storage.get(i) || [];
+  var itemIndex = this._findItemIndex( k, i, pairs );
+  if (itemIndex) {
+    pairs[itemIndex][1] = v;
   } else {
-    this._storage.get(i).push([k,v]);
+    pairs.push([k,v]);
   }
+  this._storage.set(i, pairs);
+
 };
 
 HashTable.prototype.retrieve = function(k){
