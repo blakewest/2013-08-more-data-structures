@@ -19,4 +19,15 @@ describe("binarySearchTree", function() {
     binarySearchTree.insert(9);
     expect(binarySearchTree.left.value).toEqual(9);
   });
+
+  it("should insert values greater than the root to the right", function() {
+    binarySearchTree.insert(11);
+    expect(binarySearchTree.right.value).toEqual(11);
+  });
+
+  it("should not insert duplicate values", function() {
+    binarySearchTree.insert(10);
+    expect(binarySearchTree.left).toEqual(null);
+    expect(binarySearchTree.right).toEqual(null);
+  });
 });
