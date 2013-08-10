@@ -10,11 +10,22 @@ var makeBinarySearchTree = function(value){
 var binaryMethods = {};
 
 binaryMethods.insert = function(value) {
-  var newNode = makeBinarySearchTree(value);
+  var newNode;
   if(value > this.value) {
-    this.right = newNode;
+    if (this.right) {
+      this.right.insert(value);
+    }else{
+      newNode = makeBinarySearchTree(value);
+      this.right = newNode;
+
+    }
   }else if (value < this.value) {
-    this.left = newNode;
+    if(this.left) {
+      this.left.insert(value);
+    }else {
+      newNode = makeBinarySearchTree(value);
+      this.left = newNode;
+    }
   }else {
     return;
   }

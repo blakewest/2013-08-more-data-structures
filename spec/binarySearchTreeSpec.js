@@ -30,4 +30,12 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.left).toEqual(null);
     expect(binarySearchTree.right).toEqual(null);
   });
+
+  it("should insert correctly on left and right side with the same tree", function() {
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(8);
+
+    expect(binarySearchTree.left.value).toEqual(8);
+    expect(binarySearchTree.right.value).toEqual(12);
+  });
 });
