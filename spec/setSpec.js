@@ -29,4 +29,14 @@ describe("set", function() {
     expect(set.contains(6)).toEqual(false);
   });
 
+  it("should work with zero", function() {
+    set.add(0);
+    expect(set.contains(0)).toEqual(true);
+  });
+
+  it("should work with negative numbers", function() {
+    set.add(-5);
+    expect(set.contains(-5)).toEqual(true);
+  });
+
 });

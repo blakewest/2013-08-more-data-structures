@@ -11,6 +11,7 @@ setPrototype.add = function( value ){
 };
 
 setPrototype.contains = function( value ){
+  if( this._storage[value] === 0 ) return true;
   return Boolean( this._storage[value] );
 };
 
