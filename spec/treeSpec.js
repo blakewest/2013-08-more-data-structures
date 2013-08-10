@@ -41,6 +41,11 @@ describe("tree", function() {
     expect(tree.parent).toEqual(null);
   });
 
+  it("nodes should properly refer to their parent", function() {
+    tree.addChild('a');
+    expect(tree.children[0].parent).toEqual(tree);
+  });
+
 
   // Add more tests here to test the functionality of tree.
 });
