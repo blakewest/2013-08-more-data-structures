@@ -93,6 +93,22 @@ describe("linkedList", function() {
     expect(linkedList.removeHead()).toEqual(null);
   });
 
+  it("should removeHead on a list with one or more elements, even if array has been emptied", function() {
+    linkedList.addToHead('a');
+    expect(linkedList.removeHead()).toEqual('a');
+
+    linkedList.addToHead('b');
+    linkedList.addToTail('c');
+    linkedList.addToTail('d');
+
+    linkedList.removeHead();
+    expect(linkedList.removeHead()).toEqual('c');
+
+    linkedList.removeHead();
+    linkedList.addToHead('e');
+    expect(linkedList.removeHead()).toEqual('e');
+  })
+
 
 
 
