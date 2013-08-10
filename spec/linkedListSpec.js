@@ -76,6 +76,19 @@ describe("linkedList", function() {
     expect(linkedList.removeTail()).toEqual('a');
   });
 
+  it("should removeTail on a list with one element in any case", function() {
+    linkedList.addToHead('a');
+    expect(linkedList.removeTail()).toEqual('a');
+
+    linkedList.addToHead('b');
+    linkedList.addToHead('c');
+    linkedList.addToHead('d');
+
+    linkedList.removeTail();
+    linkedList.removeTail();
+    expect(linkedList.removeTail()).toEqual('d');
+  });
+
 
 
 

@@ -10,19 +10,6 @@ var makeLinkedList = function(){
   //everytime you make a new node, index increases. 
   //just use the 'head' and 'tail' as the pointers when you removeHead and removeTail
 
-  list.addToTail = function(value){
-    var newNode = makeNode(value);
-    list[list.index] = newNode;
-    list.tail = newNode;
-    if(list.index === 0) {       // this sets head for very first item.
-      list.head = newNode;
-    }else {
-      list[list.index-1].next = list.index;
-      list[list.index].previous = list.index-1;
-    }
-    list.index++;
-  };
-
   list.removeHead = function(){
     var result = list[list.start];
     if(list[list.start]) {
@@ -38,16 +25,28 @@ var makeLinkedList = function(){
   list.removeTail = function() {
     // get tail
     var result = list.tail;
+    
+    //only do if there is a previous item
+    if (result.previous){   
+      var previousItem = list[result.previous];
 
-    // set the next value of the thing previous to tail to null
-    list[result.previous].next = null;
+      // delete the old tail
+      delete list[ previousItem.next ];
 
-    // delete the old tail
-    delete list[ list[ result.previous ].next ];
+      // set the next value of the thing previous to tail to null
+      previousItem.next = null;
+      
 
-    // update tail property
-    list.tail = list[ result.previous ];
+      // update tail property
+      list.tail = previousItem;
 
+    } else{  //this happens when there's only one item
+      list.tail = null;
+      list.head = null;
+      delete list[list.findSoloNodeIndex()];
+    }
+
+    
     // return the old tail
     return result.value;
 
@@ -62,6 +61,19 @@ var makeLinkedList = function(){
     return false;
   };
 
+  list.addToTail = function(value){
+    var newNode = makeNode(value);
+    list[list.index] = newNode;
+    list.tail = newNode;
+    if( !list.head ) {       // this sets head for very first item.
+      list.head = newNode;
+    }else {
+      list[list.index-1].next = list.index;
+      list[list.index].previous = list.index-1;
+    }
+    list.index++;
+  };
+
   list.addToHead = function(value) {
     var newNode = makeNode(value);
 
@@ -69,7 +81,7 @@ var makeLinkedList = function(){
     var currentHead = list.head;
     // Shifting the head on a non-empty list
 
-    if ( list.index ) {
+    if ( currentHead !== null ) {
       // find neighbor of current head to determine currentHead's index, or find solo node index
       var currentHeadIndex = list.head.next ? list[list.head.next].previous : list.findSoloNodeIndex();
       // set new node next to current head index
