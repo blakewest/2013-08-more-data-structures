@@ -23,4 +23,10 @@ describe("set", function() {
     expect(set.contains('a')).toEqual(false);
   });
 
+  it("should work with numbers", function() {
+    set.add(5);
+    expect(set.contains(5)).toEqual(true);
+    expect(set.contains(6)).toEqual(false);
+  });
+
 });

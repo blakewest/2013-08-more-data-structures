@@ -7,7 +7,7 @@ var makeSet = function(){
 var setPrototype = {};
 
 setPrototype.add = function( value ){
-  if( value ) this._storage[value] = value;
+  if( value || Math.abs(value) >= 0 ) this._storage[value] = value;
 };
 
 setPrototype.contains = function( value ){
