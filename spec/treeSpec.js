@@ -46,6 +46,12 @@ describe("tree", function() {
     expect(tree.children[0].parent).toEqual(tree);
   });
 
+  it("should refer to the parent of a grandchild correctly", function() {
+    tree.addChild('a');
+    tree.children[0].addChild('b');
+    expect(tree.children[0].children[0].parent).toEqual(tree.children[0]);
+  });
+
 
   // Add more tests here to test the functionality of tree.
 });
