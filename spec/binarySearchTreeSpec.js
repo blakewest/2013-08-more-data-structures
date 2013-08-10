@@ -3,6 +3,9 @@ describe("binarySearchTree", function() {
 
   beforeEach(function() {
     binarySearchTree = makeBinarySearchTree(10);
+    spyTest = {
+       callback: function(value) {console.log(value);}
+    };
   });
 
   it("should have methods named 'insert', 'contains', and 'depthFirstLog", function() {
@@ -61,6 +64,21 @@ describe("binarySearchTree", function() {
     expect(binarySearchTree.contains(14)).toEqual(true);
     expect(binarySearchTree.contains(8.5)).toEqual(true);
     expect(binarySearchTree.contains(9)).toEqual(true);
+  });
+
+  it("should execute a function on every value in the tree", function() {
+    binarySearchTree.insert(12);
+    binarySearchTree.insert(14);
+    binarySearchTree.insert(8);
+    binarySearchTree.insert(9);
+    binarySearchTree.insert(8.5);
+
+    spyOn(spyTest, 'callback');
+    binarySearchTree.depthFirstLog(spyTest.callback);
+    expect(spyTest.callback.calls.length).toEqual(6);
+    
+    // spyOn does not actually call callback, this will show proper result in console
+    // binarySearchTree.depthFirstLog(function(value) {console.log(value);} );
   });
 
 });

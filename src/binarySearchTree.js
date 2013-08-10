@@ -42,6 +42,13 @@ binaryMethods.contains = function(value) {
   return false;
 };
 
-binaryMethods.depthFirstLog = function() {
-
+binaryMethods.depthFirstLog = function(func) {
+  var node = this;
+  func(node.value);
+  if(node.right) {
+    node.right.depthFirstLog(func);
+  }
+  if(node.left) {
+    node.left.depthFirstLog(func);
+  }
 };
