@@ -39,4 +39,16 @@ describe("set", function() {
     expect(set.contains(-5)).toEqual(true);
   });
 
+  it("should be able to remove all numbers", function() {
+    set.add(2);
+    set.add(0);
+    set.add(-2);
+    set.remove(-2);
+    expect(set.contains(-2)).toEqual(false);
+    set.remove(0);
+    expect(set.contains(0)).toEqual(false);
+    set.remove(2);
+    expect(set.contains(2)).toEqual(false);
+  });
+
 });
