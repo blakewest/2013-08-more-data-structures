@@ -58,6 +58,13 @@ describe("tree", function() {
     expect(tree.children.length).toEqual(0);
   });
 
+  it("should preserve the tree structure of a child after removing it from its parent", function() {
+    tree.addChild('a');
+    tree.children[0].addChild('b');
+    var a = tree.children[0].removeFromParent();
+    expect(a.children.length).toEqual(1);
+  });
+
 
   // Add more tests here to test the functionality of tree.
 });

@@ -52,5 +52,5 @@ treeMethods.removeFromParent = function() {
   this.parent = null;
 
   // return this node
-  return parent.children.splice(index, 1);
+  return parent.children.splice(index, 1)[0];
 };
