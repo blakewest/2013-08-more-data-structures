@@ -87,9 +87,6 @@ describe("set", function() {
       'c': [1,2,3,"a","b",true, false],
       'stringy': true
     })).toEqual(false);
-    
   });
-
-
 
 });

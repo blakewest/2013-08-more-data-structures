@@ -7,7 +7,7 @@ var makeSet = function(){
 var setPrototype = {};
 
 setPrototype.add = function( value ){
-	var stringified = JSON.stringify(value);
+  var stringified = JSON.stringify(value);
   if( value || Math.abs(value) >= 0 ) this._storage[stringified] = value;
 };
 
@@ -18,6 +18,6 @@ setPrototype.contains = function( value ){
 };
 
 setPrototype.remove = function( value ){
-	var stringified = JSON.stringify(value);
+  var stringified = JSON.stringify(value);
   delete this._storage[stringified ];
 };
