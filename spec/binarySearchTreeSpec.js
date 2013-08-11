@@ -76,7 +76,7 @@ describe("binarySearchTree", function() {
     spyOn(spyTest, 'callback');
     binarySearchTree.depthFirstLog(spyTest.callback);
     expect(spyTest.callback.calls.length).toEqual(6);
-    
+
     // spyOn does not actually call callback, this will show proper result in console
     // binarySearchTree.depthFirstLog(function(value) {console.log(value);} );
   });

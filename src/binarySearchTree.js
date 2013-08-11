@@ -1,5 +1,5 @@
 var makeBinarySearchTree = function(value){
-	var newBST = Object.create(binaryMethods);
+  var newBST = Object.create(binaryMethods);
   newBST.left = null;
   newBST.right = null;
   newBST.value = value;
@@ -10,31 +10,18 @@ var makeBinarySearchTree = function(value){
 var binaryMethods = {};
 
 binaryMethods.insert = function(value) {
-  var newNode;
   if(value > this.value) {
-    if (this.right) {
-      this.right.insert(value);
-    }else{
-      newNode = makeBinarySearchTree(value);
-      this.right = newNode;
-
-    }
+    this.right ? this.right.insert(value) : this.right = makeBinarySearchTree(value);
   }else if (value < this.value) {
-    if(this.left) {
-      this.left.insert(value);
-    }else {
-      newNode = makeBinarySearchTree(value);
-      this.left = newNode;
-    }
+    this.left ? this.left.insert(value) : this.left = makeBinarySearchTree(value);
   }else {
     return;
   }
 };
 
 binaryMethods.contains = function(value) {
-  if(value === this.value) {
-    return true;
-  }else if(value > this.value && this.right){
+  if(value === this.value) { return true; }
+  else if(value > this.value && this.right){
     return this.right.contains(value);
   }else if(this.left) {
     return this.left.contains(value);
@@ -45,10 +32,6 @@ binaryMethods.contains = function(value) {
 binaryMethods.depthFirstLog = function(func) {
   var node = this;
   func(node.value);
-  if(node.right) {
-    node.right.depthFirstLog(func);
-  }
-  if(node.left) {
-    node.left.depthFirstLog(func);
-  }
+  node.right && node.right.depthFirstLog(func);
+  node.left && node.left.depthFirstLog(func);
 };
