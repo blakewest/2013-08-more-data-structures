@@ -26,5 +26,4 @@ describe("hashTable", function() {
     expect(hashTable.retrieve(v2)).toEqual(v2);
   });
 
-  // add more tests!
 });
