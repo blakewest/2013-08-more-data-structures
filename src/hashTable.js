@@ -1,10 +1,12 @@
 var HashTable = function(){
   this._limit = 8;
   this._storage = makeLimitedArray(this._limit);
+  this._usage = 0;
 };
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
+  this.checkStorage();
   var pairs = this._storage.get(i) || [];
   var pairsIndex = this._findItemIndex( k, i, pairs );
   if (pairsIndex) {
@@ -38,4 +40,13 @@ HashTable.prototype._findItemIndex = function( k, i, pairs ) {
   } else {
     return undefined;
   }
+};
+
+HashTable.prototype.checkStorage = function() {
+  var count = 0;
+  this._storage.each(function(item) {
+    if( item && item.length ) { count++; }
+  });
+  this._usage = count / this._limit;
+  return this._usage;
 };
